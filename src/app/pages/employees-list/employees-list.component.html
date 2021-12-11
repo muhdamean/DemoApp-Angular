@@ -1,0 +1,53 @@
+<div class="container ">
+    <div class="row ">
+        <div class="col-sm-8 table-responsive mt-4">
+            <a href="register" class="btn btn-outline-success btn-sm">Add Employee</a>
+            <table class="table " *ngIf="employees">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employees; let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{employee.username}}</td>
+                        <td>{{employee.email}}</td>
+                        <td>{{employee.phone}}</td>
+                        <td><a class="p-1" [routerLink]="['/update-employee', employee.id]" >Update</a>
+                        
+                            <button type="button" (click)="onDelete(employee.id, employee.email)" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button></td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-2">
+                  <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Employee</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Confirm to delete employee <strong>{{name}}</strong> ?
+                        <input type="number" hidden name="id" [(ngModel)]="id">
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" (click)="onDeleteConfirm(id)" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+</div>

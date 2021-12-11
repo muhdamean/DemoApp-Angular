@@ -1,0 +1,53 @@
+<div class="container ">
+    <div class="row">
+        
+        <div class="col-sm-6 table-responsive mt-4">
+            <a href="add-department" class="btn btn-outline-success btn-sm">Add Department</a>
+            <table class="table " *ngIf="departments">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dept of departments; let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{dept.name}}</td>
+                        <td>{{dept.description}}</td>
+                        <td>{{dept.date | date:'dd/MM/yyyy'}}</td>
+                        <td><a class="p-1" [routerLink]="['/update-department', dept.id]" >Update</a>
+                            <button  class="btn btn-link" type="button" (click)="onDelete(dept.id,dept.name)" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+                        </td>
+                       
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-2">
+             <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Department</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Confirm to delete <strong>{{name}}</strong> department?
+                        <input type="number" hidden name="deptId" [(ngModel)]="deptId">
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" (click)="onDeleteConfirm(deptId)" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>

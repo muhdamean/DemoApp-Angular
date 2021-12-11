@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-4 mt-5">
+            <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)"
+ class="form"    novalidate="">
+                <h4>Login</h4>
+                <h6>You're one click away, login now!</h6>
+                <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+                <div class="form-group mt-2">
+                    <label for="username" class="label-control">Email</label>
+                    <!-- <span class="error float-right" 
+                    *ngIf="frm.username.errors && (isSubmitted || frm.username.dirty)">Required</span> -->
+                    <input type="text" class="form-control" id="username" name="username" 
+                    [(ngModel)]="username">
+                    <small class="text-muted">We'll never share your details with anyone.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="label-control">Password</label>
+                    <!-- <span class="error float-right" 
+                    *ngIf="frm.password.errors && (isSubmitted || frm.password.dirty)">Required</span> -->
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password"
+                     >
+                </div>
+                <div class="checkbox-inline">
+                    <input type="checkbox" class="checkbox-input">
+                    <span class="checkbox-label px-2">Remember Me?</span>
+                </div>
+                <button type="submit" class="btn btn-outline-success btn-sm">Login</button>
+                <br>
+                <div class="label label-danger">{{error}}</div>
+            </form>
+        </div>
+      
+    </div>
+</div>
